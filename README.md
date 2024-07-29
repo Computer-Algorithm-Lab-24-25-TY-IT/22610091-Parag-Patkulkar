@@ -1,7 +1,7 @@
 # 22610091-Parag-Patkulkar<br>
 
 ## Assignment 1 - Output
-<img src="CA Assignment 1/ss1">
+<img src="CA Assignment 1/ss1.png">
 
 
 
