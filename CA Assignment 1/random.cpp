@@ -1,52 +1,42 @@
 #include<cstdlib>
 #include<iostream>
 #include<cmath>
+long long int mod = 1e9+7;
 using namespace std;
 
 bool isPrime(int num);
 bool isEven(int num);
 bool isFactorial(int num);
-bool isPreSum(int num);
-bool isAverage(int num);
+void listPreSumArr(int *arr);
+float average(int *arr);
+void listPrimes(int *arr);
+void listOdds(int *arr);
+void listEvens(int *arr);
+int preSum(int *arr, int n);
+int factorial(int num);
+void listFact(int *arr);
 
 int main(){
     srand(time(0));
-    int random_num = rand() % 10000;
-
-    if(isPrime(random_num)){
-        cout<<random_num<<" is a Prime Number"<<endl;
+    int random_num[100];
+    cout<<"Numbers : ";
+    for(int i = 0; i<100; i++){
+        random_num[i] = rand() % 10000;
+        cout<<random_num[i]<<" ";
     }
-    else{
-        cout<<random_num<<" is not a Prime Number"<<endl;
-    }
-    
-    if(isEven(random_num)){
-        cout<<random_num<<" is an Even Number"<<endl;
-    }
-    else{
-        cout<<random_num<<" is an Odd Number"<<endl;
-    }
-
-    if(isFactorial(random_num)){
-        cout<<random_num<<" is a Factorial of a Number"<<endl;
-    }
-    else{
-        cout<<random_num<<" is not a Factorial of any Number"<<endl;
-    }
-
-    if(isPreSum(random_num)){
-        cout<<random_num<<" has a Prefix Sum"<<endl;
-    }
-    else{
-        cout<<random_num<<" does not have a Prefix Sum"<<endl;
-    }
-
-    if(isAverage(random_num)){
-        cout<<random_num<<" is an Average of Sum of n Numbers"<<endl;
-    }
-    else{
-        cout<<random_num<<" is not an Average of Sum of n Numbers"<<endl;
-    }
+    cout<<endl<<endl;
+    listEvens(random_num);
+    cout<<endl;
+    listOdds(random_num);
+    cout<<endl;
+    listPrimes(random_num);
+    cout<<endl;
+    listPreSumArr(random_num);
+    cout<<endl;
+    //listFact(random_num);
+    cout<<endl;
+    cout<<"Average = "<<average(random_num);
+    cout<<endl;
 }
 
 
@@ -66,46 +56,77 @@ bool isEven(int num){
     return false;
 }
 
-bool isFactorial(int num){
-    int temp = 1;
-    for(int i = 1; temp<num; i++){
-        temp = temp*i;
+int preSum(int *arr, int n){
+    int sum = 0;
+
+    for(int i = 0; i<n; i++){
+        sum = sum + arr[i];
     }
+
+    return sum;
+}
+
+void listPreSumArr(int *arr){
+    cout<<"Prefix sum Array : ";
+    for(int i = 0; i<100; i++){
+        cout<<preSum(arr, i)<<" ";
+    }
+    cout<<endl;
+}
+
+float average(int *arr){
+    float sum = 0;
     
-    if(temp == num){
-        return true;
+    for(int i = 0; i<100; i++){
+        sum = sum + arr[i];
     }
-    else{
-        return false;
-    }
+
+    return sum/100.0;
 }
 
-bool isPreSum(int num){
-    int temp = 0;
-    for(int i = 1; temp<num; i++){
-        temp = temp+i;
+void listPrimes(int *arr){
+    cout<<"Prime : ";
+    for(int i = 0; i<100; i++){
+        if(isPrime(arr[i])){
+            cout<<arr[i]<<" ";
+        }
     }
-
-    if(temp == num){
-        return true;
-    }
-    else{
-        return false;
-    }
+    cout<<endl;
 }
 
-bool isAverage(int num){
-    float temp = 0;
-    int i = 1;
-    for(; temp < num; i++){
-        temp = (i+1)/2.0;      
+void listEvens(int *arr){
+    cout<<"Evens : ";
+    for(int i = 0; i<100; i++){
+        if(isEven(arr[i])){
+            cout<<arr[i]<<" ";
+        }
     }
-
-    if(temp == num){
-        return true;
-    }
-    else{
-        return false;
-    }
+    cout<<endl;
 }
 
+void listOdds(int *arr){
+    cout<<"Odds : ";
+    for(int i = 0; i<100; i++){
+        if(!isEven(arr[i])){
+            cout<<arr[i]<<" ";
+        }
+    }
+    cout<<endl;
+}
+
+
+int factorial(int num){
+    int res =1;
+    for(int i = 1; i<=num; i++){
+        res = ((res % mod) * (i % mod)) % mod;
+    }
+    return res;
+}
+
+void listFact(int *arr){
+    cout<<"Factorial Array : ";
+    for(int i = 0; i<100; i++){
+        cout<<factorial(arr[i])<<" ";
+    }
+    cout<<endl;
+}

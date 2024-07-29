@@ -1,14 +1,19 @@
 Flat profile:
 
 Each sample counts as 0.01 seconds.
- no time accumulated
-
   %   cumulative   self              self     total           
- time   seconds   seconds    calls  Ts/call  Ts/call  name    
-  0.00      0.00     0.00        2     0.00     0.00  isAverage(int)
-  0.00      0.00     0.00        2     0.00     0.00  _fini
-  0.00      0.00     0.00        1     0.00     0.00  isFactorial(int)
-  0.00      0.00     0.00        1     0.00     0.00  isPreSum(int)
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+100.00      0.01     0.01      100     0.10     0.10  factorial(int)
+  0.00      0.01     0.00     1265     0.00     0.00  __gnu_cxx::__enable_if<std::__is_integer<int>::__value, double>::__type std::sqrt<int>(int)
+  0.00      0.01     0.00      200     0.00     0.00  isEven(int)
+  0.00      0.01     0.00      100     0.00     0.00  preSum(int*, int)
+  0.00      0.01     0.00      100     0.00     0.00  isPrime(int)
+  0.00      0.01     0.00        1     0.00     0.00  listPrimes(int*)
+  0.00      0.01     0.00        1     0.00     0.00  listPreSumArr(int*)
+  0.00      0.01     0.00        1     0.00     0.00  average(int*)
+  0.00      0.01     0.00        1     0.00    10.00  listFact(int*)
+  0.00      0.01     0.00        1     0.00     0.00  listOdds(int*)
+  0.00      0.01     0.00        1     0.00     0.00  listEvens(int*)
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -46,22 +51,57 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 4 byte(s) no time propagated
+granularity: each sample hit covers 4 byte(s) for 100.00% of 0.01 seconds
 
 index % time    self  children    called     name
-                0.00    0.00       2/2           main [4]
-[6]      0.0    0.00    0.00       2         isAverage(int) [6]
+                                                 <spontaneous>
+[1]    100.0    0.00    0.01                 main [1]
+                0.00    0.01       1/1           listFact(int*) [3]
+                0.00    0.00       1/1           listEvens(int*) [18]
+                0.00    0.00       1/1           listOdds(int*) [17]
+                0.00    0.00       1/1           listPrimes(int*) [14]
+                0.00    0.00       1/1           listPreSumArr(int*) [15]
+                0.00    0.00       1/1           average(int*) [16]
 -----------------------------------------------
-                0.00    0.00       1/2           isPrime(int) [11]
-                0.00    0.00       1/2           isFactorial(int) [8]
-[7]      0.0    0.00    0.00       2         _fini [7]
+                0.01    0.00     100/100         listFact(int*) [3]
+[2]    100.0    0.01    0.00     100         factorial(int) [2]
 -----------------------------------------------
-                0.00    0.00       1/1           main [4]
-[8]      0.0    0.00    0.00       1         isFactorial(int) [8]
-                0.00    0.00       1/2           _fini [7]
+                0.00    0.01       1/1           main [1]
+[3]    100.0    0.00    0.01       1         listFact(int*) [3]
+                0.01    0.00     100/100         factorial(int) [2]
 -----------------------------------------------
-                0.00    0.00       1/1           main [4]
-[9]      0.0    0.00    0.00       1         isPreSum(int) [9]
+                0.00    0.00    1265/1265        isPrime(int) [13]
+[10]     0.0    0.00    0.00    1265         __gnu_cxx::__enable_if<std::__is_integer<int>::__value, double>::__type std::sqrt<int>(int) [10]
+-----------------------------------------------
+                0.00    0.00     100/200         listEvens(int*) [18]
+                0.00    0.00     100/200         listOdds(int*) [17]
+[11]     0.0    0.00    0.00     200         isEven(int) [11]
+-----------------------------------------------
+                0.00    0.00     100/100         listPreSumArr(int*) [15]
+[12]     0.0    0.00    0.00     100         preSum(int*, int) [12]
+-----------------------------------------------
+                0.00    0.00     100/100         listPrimes(int*) [14]
+[13]     0.0    0.00    0.00     100         isPrime(int) [13]
+                0.00    0.00    1265/1265        __gnu_cxx::__enable_if<std::__is_integer<int>::__value, double>::__type std::sqrt<int>(int) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         listPrimes(int*) [14]
+                0.00    0.00     100/100         isPrime(int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         listPreSumArr(int*) [15]
+                0.00    0.00     100/100         preSum(int*, int) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[16]     0.0    0.00    0.00       1         average(int*) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[17]     0.0    0.00    0.00       1         listOdds(int*) [17]
+                0.00    0.00     100/200         isEven(int) [11]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         listEvens(int*) [18]
+                0.00    0.00     100/200         isEven(int) [11]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -154,5 +194,7 @@ notice and this notice are preserved.
 
 Index by function name
 
-   [8] isFactorial(int)        [6] isAverage(int)
-   [9] isPreSum(int)           [7] _fini
+  [14] listPrimes(int*)       [16] average(int*)           [2] factorial(int)
+  [15] listPreSumArr(int*)    [13] isPrime(int)           [18] listEvens(int*)
+  [11] isEven(int)             [3] listFact(int*)         [10] __gnu_cxx::__enable_if<std::__is_integer<int>::__value, double>::__type std::sqrt<int>(int)
+  [12] preSum(int*, int)      [17] listOdds(int*)
