@@ -5,8 +5,7 @@
 <img src="CA Assignment 1/ss2.png">
 
 ---
-## Assignment 1 - Visualization
-<img src="CA Assignment 1/graph2.pdf">
+
 
 
 
