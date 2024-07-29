@@ -6,6 +6,7 @@
 
 ---
 ## Assignment 1 - Visualization
+<img src="CA Assignment 1/graph2.pdf>
 
 
 
